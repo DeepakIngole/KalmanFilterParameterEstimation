@@ -18,7 +18,7 @@ X=randn(13, numdata)*sqrt(dataVariance ) + repmat(mixtureCenters,1,numdata);
 
 % N and A are unknown and we want to estimate them.
 N = [];
-useRandomN = 0;
+useRandomN = 1;
 if( useRandomN )
     N=randn(13, numdata)*sqrt(noiseVariance ) + repmat(mixtureCenters,1,numdata);
 else
@@ -36,8 +36,8 @@ end
 
 %% Do the Estimation
 
-numiter = 10; % Set the number of iterations
-numbatch = 5;% Set size of batch
+numiter = 50; % Set the number of iterations
+numbatch = 7;% Set size of batch
 
 
 % Build Initial State Covariance Matrix
@@ -54,8 +54,8 @@ errL2 = zeros(numiter+1,1);
 
 % set initial dynamics and observation
 % variance values
-var_d = 1e-4;
-var_o = 1e-4;
+var_d = 1e-5;
+var_o = 1;
 
 
 % Compute initial values for errors
